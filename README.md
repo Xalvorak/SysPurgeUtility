@@ -18,6 +18,24 @@ The script covers a wide range of cleanup tasks:
 - Cleans up SoftwareDistribution folder to free update cache.
 - Automatically restarts services after cleanup.
 
+Warnings
+
+Run the script as Administrator to allow all cleanup operations.
+
+The script is aggressive and deletes files that Windows considers safe to remove.
+
+Purging caches and logs can impact diagnostics or application load times temporarily.
+
+Back up important data before running, and use at your own risk.
+
+Usage
+To run the script, open an elevated PowerShell prompt and execute:
+
+.\SysPurgeUtility.ps1
+If your system policy blocks script execution, enable it for the current user with:
+
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+
 ## Key parts of the script
 
 Here are some examples of the core commands used in the script:
@@ -57,21 +75,3 @@ Dism.exe /Online /Cleanup-Image /StartComponentCleanup /ResetBase
 
 # Run Disk Cleanup silently
 cleanmgr /sagerun:1
-
-# Warnings
-
-Run the script as Administrator to allow all cleanup operations.
-
-The script is aggressive and deletes files that Windows considers safe to remove.
-
-Purging caches and logs can impact diagnostics or application load times temporarily.
-
-Back up important data before running, and use at your own risk.
-
-Usage
-To run the script, open an elevated PowerShell prompt and execute:
-
-.\SysPurgeUtility.ps1
-If your system policy blocks script execution, enable it for the current user with:
-
-Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
